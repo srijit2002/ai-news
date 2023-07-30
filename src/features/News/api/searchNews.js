@@ -1,5 +1,15 @@
 import { axios } from "@/lib/axios";
 
-export const searchNews = (q) => {
-  return axios.get("everything", { params: { q, sortBy: "popularity" } });
+export const searchNews = (keyword) => {
+  return axios.post("article/getArticles", {
+    action: "getArticles",
+    keyword: keyword,
+    articlesPage: 1,
+    articlesCount: 20,
+    articlesSortBy: "date",
+    resultType: "articles",
+    dataType: ["news", "pr"],
+    forceMaxDataTimeWindow: 31,
+    lang: "eng",
+  });
 };

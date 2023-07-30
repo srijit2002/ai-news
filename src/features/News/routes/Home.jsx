@@ -31,8 +31,8 @@ export const Home = () => {
     const getAllNews = async () => {
       try {
         const response = await getTopNews();
-        const articles = response?.data?.articles || [];
-        setArticles(articles.filter((article) => article.urlToImage));
+        const fetchedArticles = response?.data?.articles?.results || [];
+        setArticles(fetchedArticles.filter((article) => article.image));
       } catch (error) {
         console.log(error);
       }
@@ -42,7 +42,7 @@ export const Home = () => {
   const handleSearch = async (searchTerm) => {
     try {
       const response = await searchNews(searchTerm);
-      const articles = response?.data?.articles || [];
+      const articles = response?.data?.articles?.results || [];
       setSearchResults(articles);
     } catch (error) {
       console.log(error);

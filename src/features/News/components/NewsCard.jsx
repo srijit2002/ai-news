@@ -1,6 +1,6 @@
 import { formatDate } from "@/utils/formatDate";
 import { useRef } from "react";
-export const NewsCard = ({ title, url, urlToImage,image,published_at, publishedAt, active }) => {
+export const NewsCard = ({ title, url, urlToImage,image,published_at,dateTime, publishedAt, active }) => {
   const cardRef = useRef(null);
   if (active) {
     cardRef?.current?.scrollIntoView({
@@ -24,7 +24,7 @@ export const NewsCard = ({ title, url, urlToImage,image,published_at, publishedA
         alt={title}
       />
       <section className="min-w-[80%] z-[100] lg:mt-6 mt-5  flex gap-4 flex-col justify-center items-center absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
-        <h3 className="text-sm font-[lora] text-white">{formatDate(publishedAt||published_at)}</h3>
+        <h3 className="text-sm font-[lora] text-white">{formatDate(publishedAt||published_at||dateTime)}</h3>
         <h1 className="font-[roboto] font-medium text-white  text-center text-sm sm:text-base ">
           {title}
           <a href={url} className="px-4 text-yellow cursor-pointer" target="_blank" rel="noreferrer">Learn More</a>
