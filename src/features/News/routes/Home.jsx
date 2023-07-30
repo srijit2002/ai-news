@@ -32,7 +32,6 @@ export const Home = () => {
       try {
         const response = await getTopNews();
         const articles = response?.data?.articles || [];
-        console.log(articles);
         setArticles(articles.filter((article) => article.urlToImage));
       } catch (error) {
         console.log(error);
